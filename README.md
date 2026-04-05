@@ -19,15 +19,37 @@ Cihazınızı akıllı bir güvenlik kamerasına dönüştürerek, hareket algı
 
 ## 🛠️ Kurulum Gereksinimleri
 
-Bu projenin sorunsuz çalışabilmesi için telefonunuzda **Termux** ve **Termux:API** uygulamalarının yüklü ve gerekli izinlerin (Kamera, Depolama, Mikrofon, SMS vb.) verilmiş olması gerekir.
+Bu projenin sorunsuz çalışabilmesi için telefonunuzda F-Droid veya benzeri bir kaynak üzerinden **Termux** ve **Termux:API** uygulamalarının yüklü ve gerekli izinlerin (Kamera, Depolama, Mikrofon, SMS vb.) cihaz ayarlarından Termux'a verilmiş olması gerekir.
 
-Termux üzerinde kurulması gereken paketler:
-```bash
-pkg update && pkg upgrade
-pkg install python python-numpy opencv 
-pkg install termux-api ffmpeg curl
-```
-*Not: Gerekli Python bağımlılıkları temel olarak standart kütüphaneler (`os`, `threading`, `subprocess`, `json` vb.) ve `cv2`, `numpy` modüllerinden oluşmaktadır.*
+### Adım Adım Kurulum
+
+1. **Termux Ortamını Güncelleyin ve Bağımlılıkları Yükleyin:**
+   Termux uygulamasını açın ve sırasıyla aşağıdaki komutları çalıştırarak gerekli temel Termux paketlerini kurun:
+   ```bash
+   pkg update && pkg upgrade
+   pkg install git python python-numpy opencv 
+   pkg install termux-api ffmpeg curl
+   ```
+
+2. **Termux Depolama İznini Verin:**
+   Uygulamanın kayıtları cihazınızda düzgün arşivleyebilmesi için Termux'a depolama erişim izni vermelisiniz:
+   ```bash
+   termux-setup-storage
+   ```
+   *(Ekrana çıkan izin uyarısına onay verin.)*
+
+3. **Projeyi GitHub'dan İndirin (Clone):**
+   Git komutunu kullanarak projeyi cihazınıza indirin ve dizine geçiş yapın:
+   ```bash
+   git clone https://github.com/aoaydinn/ProSecCam.git
+   cd ProSecCam
+   ```
+
+4. **Python Bağımlılıklarını Doğrulayın:**
+   Zaten `pkg install` aşamasında arka planda `numpy` ve `opencv` kuruluyor ancak ek bir eksiklik olmasını önlemek adına dilerseniz requirements dosyasını da okutabilirsiniz:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 ---
 
